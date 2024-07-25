@@ -1,8 +1,16 @@
 hyprland - Window Manager
+waybar - Bar
 wofi - App launcher
 dolphin - File explorer
 btop - Resource monitor
 NetworkManager - network manager
 pipewire - Audio server
-sddm - graphical login
-swaylock - screenlock
+sddm - Graphical login
+swaync - Notification center
+python-pywal - Colorscheme generator
+swww - Wallpaper setter
+waypaper - swww frontend
+blueman - Bluetooth frontend
+kitty - Terminal
+hyprlock - Screen lock
+qimgv - Image viewer
