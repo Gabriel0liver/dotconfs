@@ -1,24 +1,27 @@
 {
      "layer": "top", // Waybar at top layer
   //  "position": "bottom", // Waybar position (top|bottom|left|right)
-   "height": 10, // Waybar height (to be removed for auto height)
+   //"height": 10, // Waybar height (to be removed for auto height)
     "width": 1920, // Waybar width
+    "output": "DP-1",
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "clock",
+	"custom/logo",
+        "hyprland/workspaces",
         "custom/waybar-mpris",
-        "gamemode"
         ],
     "modules-center": [
-        "hyprland/workspaces",
-        "river/tags"
+        "clock",
+	"river/tags"
         ],
     "modules-right": [
         "tray",
+	"mpd",
+	"custom/notifications",
         "pulseaudio",
-        "power-profiles-daemon",
-        "battery"
+        "network",
+	"battery"
     ],
     "keyboard-state": {
         "numlock": true,
@@ -41,38 +44,21 @@
   }
 },
 
-"wlr/workspaces": {
-  "format": "{icon}",
-  "on-click": "activate",
-  "format-icons": {
-    "1": "",
-    "2": "",
-    "3": "",
-    "4": "",
-    "5": "",
-    "urgent": "",
-    "active": "",
-    "default": ""
-  },
-  "sort-by-number": true
+
+"hyprland/window": {
+    "format": "{}",
+    "max-length": 30,
+    "separate-outputs": true
+},
+    
+"custom/logo": {
+	"format": "󰣇",
+	"tooltip": true,
+	"tooltip-format": "amogus",
+	"on-click": "sleep 0.1; .config/hypr/scripts/launcher",
+	"on-click-right": "sleep 0.1; .config/hypr/scripts/update"
 },
 
-"river/mode": {
-    "format": "mode: {}"
-},
-    "hyprland/window": {
-        "format": "{}",
-        "max-length": 30,
-        "separate-outputs": true
-    },
-    
-    "custom/logo": {
-	"format": "󰣇",
-    "tooltip": true,
-    "tooltip-format": "amogus",
-	"on-click": "sleep 0.1; .config/hypr/scripts/launcher",
-    "on-click-right": "sleep 0.1; .config/hypr/scripts/update"
-},
     "custom/waybar-mpris": {
         "return-type": "json",
         "max-length": 40,
@@ -126,34 +112,7 @@
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)"
     },
-    "custom/power_profile": {
-  //shows the current power profile and switches to next on click
-    "exec": "~/.config/hypr/scripts/power_profile",
-    "return-type": "json",
-    "interval": 20,
-    "format": "{}",
-    "on-click": "~/.config/hypr/scripts/power_profile next",
-    "signal": 8
-    },
-    "tray": {
-        "icon-size": 14,
-        "spacing": 24,
-        "show-passive-items": false
-    },
-    
-    "gamemode": {
-  	"format": "󰊴",
-  	"format-alt": "{glyph} {count}",
-  	"glyph": "",
-  	"hide-not-running": true,
-  	"use-icon": false,
-  	"icon-name": "",
-  	"icon-spacing": 4,
-  	"icon-size": 14,
-  	"tooltip": true,
-  	"tooltip-format": "Games running: {count}"
-  },
-
+   
   "custom/notification": {
     "tooltip": false,
     "format": "{icon}",
@@ -176,7 +135,7 @@
   },
 
   "clock": {
-    "format": "{:%H:%M %A %m/%d}",
+    "format": "{:%H:%M %A %d/%m}",
     "format-alt": "{:%A, %B %d, %Y (%R)} 󰭦",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -201,27 +160,9 @@
                 "on-scroll-down": "shift_down"
                 }
 },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC} {icon}",
-        "format-icons": ["󱃃", "󰔏", "󱃂"]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent} {icon}",
-        "format-icons": ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"]
-    },
-    "battery": {
+
+
+	"battery": {
         "states": {
             // "good": 95,
             "warning": 30,
@@ -236,9 +177,10 @@
         // "format-full": "",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
+
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "Wifi 󰤨",
+        "format-wifi": "Wifi 󰤨 ({signalStrength}%)",
         "format-ethernet": "Wired 󰣺",
         "tooltip-format": "{essid} via {gwaddr}",
         "format-linked": "{ifname} (No IP) ",
@@ -272,12 +214,6 @@
         },
         "on-click": "pavucontrol"
     },
-"custom/fan-rpm": {
-  "exec": "~/.config/hypr/scripts/fan",
-  "return-type": "json",
-    "interval": 5
-},
-
     
     "custom/media": {
         "format": "{icon} {}",
@@ -290,6 +226,12 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    }
+    },
+
+"tray": {
+	"icon-size": 16,
+	"spacing": 10
 }
+}
+
 
