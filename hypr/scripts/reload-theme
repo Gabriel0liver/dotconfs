@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Notification details
+title="Changing system colors"
+message="New colors goes brrr!"
+
+echo -e "${GREEN}${GLYPH} Sending notification with icon: $icon${NC}"
+
+# Send the notification
+notify-send -e -h string:x-canonical-private-synchronous:sys-notify -u low -t 2800 "$title" "$message"
+
+# Execute other commands
+#echo -e "\n${GREEN}${GLYPH} Running build-gradience-without-blur.py (for GTK theme) ${NC}"
+#python3 ~/.config/hypr/scripts/build-gradience-without-blur.py
+
+#echo -e "\n${GREEN}${GLYPH} Applying gtk theme ${NC}"
+#gradience-cli apply -n pywal --gtk both
+
+echo -e "\n${GREEN}${GLYPH} Reloading Waybar ${NC}"
+pkill -SIGUSR2 waybar
+
+echo -e "\n${GREEN}${GLYPH} Reloading swaync (notifications)${NC}"
+swaync-client -rs
+
+#echo -e "\n${GREEN}${GLYPH} Running colors-folders.py (for papirus colored folders).${NC}"
+#python ~/.config/hypr/scripts/colors-folders.py
+
+#echo -e "\n${GREEN}${GLYPH} Building Qt theme with script build-qt ${NC}"
+#~/.config/hypr/scripts/build-qt
+
+echo -e "\n${GREEN}${GLYPH} Running hypr color script (for window borders, hyprlock, lock screen) ${NC}"
+~/.config/hypr/scripts/hypr-color-generator
+
+#echo -e "\n${GREEN}${GLYPH} Running walogram (for telegram) ${NC}"
+#walogram
+
+#echo -e "\n${GREEN}${GLYPH} Running pywal-discord (for discord) ${NC}"
+#pywal-discord
+
+echo -e "\n${GREEN}${GLYPH} Script execution completed.${NC}"

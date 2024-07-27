@@ -55,8 +55,8 @@
 	"format": "󰣇",
 	"tooltip": true,
 	"tooltip-format": "amogus",
-	"on-click": "sleep 0.1; .config/hypr/scripts/launcher",
-	"on-click-right": "sleep 0.1; .config/hypr/scripts/update"
+	"on-click": "wlogout",
+	"on-click-right": ""
 },
 
     "custom/waybar-mpris": {
