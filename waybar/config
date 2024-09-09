@@ -1,49 +1,33 @@
 {
-     "layer": "top", // Waybar at top layer
-  //  "position": "bottom", // Waybar position (top|bottom|left|right)
-   //"height": 10, // Waybar height (to be removed for auto height)
-    "width": 1920, // Waybar width
-    "output": "DP-1",
-    "spacing": 0, // Gaps between modules (4px)
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 5, // Waybar height (to be removed for auto height)
+    //"width": 1920, // Waybar width
+    //"output": "DP-1",
     // Choose the order of the modules
     "modules-left": [
-	"custom/logo",
+	      "custom/logo",
         "hyprland/workspaces",
         "custom/waybar-mpris",
         ],
     "modules-center": [
         "clock",
-	"river/tags"
+	      "river/tags"
         ],
     "modules-right": [
+	      "custom/notifications",
         "tray",
-	"mpd",
-	"custom/notifications",
+        "memory",
         "pulseaudio",
-        "network",
-	"battery"
+	      "battery"
     ],
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
+      
+"hyprland/workspaces": {
+    "persistent-workspaces":{
+        "*": [1,2,3,4,5]
     },
-    "power-profiles-daemon": {
-  "format": "{icon}",
-  "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-  "tooltip": true,
-  "format-icons": {
-    "default": "",
-    "performance": "",
-    "balanced": "",
-    "power-saver": ""
-  }
+    "format": ""
 },
-
 
 "hyprland/window": {
     "format": "{}",
@@ -53,10 +37,13 @@
     
 "custom/logo": {
 	"format": "󰣇",
-	"tooltip": true,
-	"tooltip-format": "amogus",
-	"on-click": "wlogout",
+	"tooltip": false,
+	"on-click": "wlogout -b 2",
 	"on-click-right": ""
+},
+
+"memory": {
+  "format": "   {percentage}%"
 },
 
     "custom/waybar-mpris": {
@@ -68,7 +55,7 @@
         "escape": true,
     },
 
-    "wlr/taskbar": {
+"wlr/taskbar": {
 	"format": "{icon}",
 	"icon-size": 14,
 	"icon-theme": "Numix-Circle",
@@ -86,6 +73,7 @@
 		"Foot Server": "Terminal"
 	}
 },
+
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S} ",
         "format-disconnected": "Disconnected ",
@@ -135,7 +123,7 @@
   },
 
   "clock": {
-    "format": "{:%H:%M %A %d/%m}",
+    "format": "{:%H:%M - %A %d/%m}",
     "format-alt": "{:%A, %B %d, %Y (%R)} 󰭦",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -168,14 +156,15 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity} {icon}",
+        "format": "{icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity} 󰂅",
-        "format-plugged": "{capacity} 󱈑",
-        "format-alt": "{time} {icon}",
+        "format-charging": "󰂅 ",
+        "format-plugged": "󱈑",
+        "format-alt": "{icon}   {capacity}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "{time}"
     },
 
     "network": {
@@ -196,9 +185,9 @@
 },
 
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume} {icon} {format_source}",
-        "format-bluetooth": "{volume} {icon} {format_source}",
+        "scroll-step": 5, // %, can be a float
+        "format": "{icon}   {volume} {format_source}",
+        "format-bluetooth": "{icon}   {volume} {format_source}",
         "format-bluetooth-muted": "󰝟 {icon}󰂯 {format_source}",
         "format-muted": "󰝟 {format_source}",
   //      "format-source": "{volume} 󰍬",
@@ -230,7 +219,7 @@
 
 "tray": {
 	"icon-size": 16,
-	"spacing": 10
+	"spacing": 25
 }
 }
 

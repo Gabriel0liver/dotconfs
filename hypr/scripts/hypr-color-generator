@@ -29,8 +29,8 @@ if [[ ${#colors[@]} -lt 12 ]]; then
 fi
 
 # Extract specific colors and remove the '#' character where necessary
-color1="${colors[3]#'#'}"
-color2="${colors[0]#'#'}"
+color1="${colors[6]#'#'}"
+color2="${colors[8]#'#'}"
 
 # Function to convert hex to RGB
 hex_to_rgb() {
@@ -43,10 +43,10 @@ hex_to_rgb() {
 
 # Convert hex colors to RGB
 color_inner=$(hex_to_rgb "${colors[0]#'#'}")
-color_outer=$(hex_to_rgb "${colors[1]#'#'}")
-color_font=$(hex_to_rgb "${colors[3]#'#'}")
-color_check=$(hex_to_rgb "${colors[5]#'#'}")
-color_fail=$(hex_to_rgb "${colors[11]#'#'}")
+color_outer=$(hex_to_rgb "${colors[6]#'#'}")
+color_font=$(hex_to_rgb "${colors[2]#'#'}")
+color_check=$(hex_to_rgb "${colors[4]#'#'}")
+color_fail=$(hex_to_rgb "${colors[1]#'#'}")
 
 # Create the content for the colors-hypr.conf file
 config_content=$(cat << EOF

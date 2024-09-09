@@ -15,3 +15,6 @@ kitty - Terminal
 hyprlock - Screen lock
 qimgv - Image viewer
 wlogout - Logout menu
+nvim - Text editor
+gvim - Better vim
+wl-clipboard - System clipboard

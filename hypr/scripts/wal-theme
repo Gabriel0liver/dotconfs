@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Theme background color
+b=111111
+
+# Wallpaper image file path 
+swww_output=$(swww query)
+path=$(echo "$swww_output" | grep -o '/home/[^"]*' | head -1)
+
+print_help () {
+	echo "	-h 		Display this help message
+	-c 'theme' 	Change current theme to 'theme'
+	-l 		List themes
+	-w		Create theme from wallpaper" 
+}
+
+while getopts "hc:lw" flag
+do
+	case "$flag" in
+		h) print_help;;
+		c) wal -b $b --theme $OPTARG && reload-theme;;
+		l) wal --theme;;
+		w) wal -b $b -s -i $path && reload-theme;;
+	esac
+done
