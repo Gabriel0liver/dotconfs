@@ -16,6 +16,10 @@ notify-send -e -h string:x-canonical-private-synchronous:sys-notify -u low -t 28
 #echo -e "\n${GREEN}${GLYPH} Applying gtk theme ${NC}"
 #gradience-cli apply -n pywal --gtk both
 
+
+echo -e "\n${GREEN}${GLYPH} Reloading Wlogout icon ${NC}"
+python ~/.config/hypr/scripts/wlogout-icons.py
+
 echo -e "\n${GREEN}${GLYPH} Reloading Waybar ${NC}"
 pkill -SIGUSR2 waybar
 

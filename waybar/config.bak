@@ -1,9 +1,9 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    //"height": 5, // Waybar height (to be removed for auto height)
+    "height": 5, // Waybar height (to be removed for auto height)
     //"width": 1920, // Waybar width
-    "output": "HDMI-A-3",
+    //"output": "DP-1",
     // Choose the order of the modules
     "modules-left": [
 	      "custom/logo",

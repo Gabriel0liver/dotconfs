@@ -2,8 +2,7 @@
 
 * {
     /* `otf-font-awesome` is required to be a for icons */
-    font-family:  SourceCodePro;
-    font-size: 1em;
+    font-family:  SourceCode;
 }
 
 window#waybar {
@@ -33,7 +32,7 @@ button {
 #workspaces{
   background-color: transparent;
   padding: 0px;
-  margin: 10px;
+  margin: 20px;
   animation: ws_hover 20s ease-in-out 1;
   transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
   border-radius: 100%;
@@ -41,13 +40,14 @@ button {
 
 #workspaces button {
     padding: 0px 11px;
-    margin: 5px 3px;
+    margin: 8px;
+    margin: 8px 3px;
     background-color: @color7;
     color: @color7;
     animation: ws_normal 20s ease-in-out 1;
     font-weight: 500;
     font-style: italic;
-    border-radius: 5px;
+    border-radius: 25%;
 }
 
 #workspaces button.empty {
@@ -67,20 +67,22 @@ button {
 }
 
 /* Define the @keyframes rule for the elementspin animation */
+#workspaces button:hover {
+    background-color: @color3;
+    color: @color0;
+}
+
 #workspaces button.focused {
-    background-color: @color1;
+    background-color: #64727D;
     box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.urgent {
-    background-color: @color5;
-}
-
-#workspaces button:hover {
-    box-shadow: inherit;
-  text-shadow: inherit;
-  background: none;
-  background-color: @color6;
+    color: @color0;
+    background-color: @color3;
+    border-radius: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #gamemode,
@@ -109,7 +111,7 @@ button {
 #mode,
 #scratchpad,
 #mpd {
-    padding: 1px 10px;
+    padding: 2px 10px;
     color: @color15;
     background: @background;
     margin: 0px 0px;
@@ -123,7 +125,6 @@ button {
 
 
 #custom-logo{
-	font-size: 1.15em;
 }
 
 
@@ -163,7 +164,7 @@ label:focus {
 }
 
 #memory {
-    color: @color6;
+    color: @color5;
 }
 
 #disk {
@@ -258,7 +259,7 @@ label:focus {
 
 #clock{
     font-style: normal;
-    font-size: 1.1em;
+    font-size:  large;
     font-weight: bolder;
 }
 
@@ -324,7 +325,7 @@ label:focus {
 }
 
 #pulseaudio{
-    color: @color6;
+    color: @color1;
 }
 
 #pulseaudio-slider slider {
@@ -349,17 +350,6 @@ label:focus {
 
 #pulseaudio-slider highlight {
     min-width: 10px;
-    border-radius: 5px;
-}
-
-#workspaces button {
-    padding: 0px 11px;
-    margin: 5px 3px;
-    background-color: @color7;
-    color: @color7;
-    animation: ws_normal 20s ease-in-out 1;
-    font-weight: 500;
-    font-style: italic;
     border-radius: 5px;
 }
 

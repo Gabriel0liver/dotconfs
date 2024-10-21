@@ -18,8 +18,8 @@ while getopts "hc:lw" flag
 do
 	case "$flag" in
 		h) print_help;;
-		c) wal -b $b --theme $OPTARG && reload-theme;;
+		c) wal --theme $OPTARG && ./reload-theme;;
 		l) wal --theme;;
-		w) wal -b $b -s -i $path && reload-theme;;
+		w) wal -s -i $path && ./reload-theme;;
 	esac
 done

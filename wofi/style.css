@@ -1,11 +1,14 @@
 @import url('/home/arch/.cache/wal/colors-waybar.css');
 
+* {
+  font-family: SourceCodePro;
+}
 
 window {
   margin: 0px;
   border: 2px solid @color6;
-  background: alpha(@background, .85);
-  border-radius: 10px;
+  background: alpha(@background, 1);
+  border-radius: 5px;
 }
 
 #input {
@@ -19,7 +22,7 @@ window {
 }
 
 #inner-box {
-  margin: 5px;
+  margin: 0px;
   border: none;
 }
 
@@ -34,18 +37,20 @@ window {
 }
 
 #text {
-  margin: 5px;
+  margin: 3px;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 #entry {
   border: none;
+  margin: 0px;
+  font-weight: 500;
 }
 
 #entry:selected{
-  font-weight: bold;
-  border-radius: 5px;
+  font-weight: 700;
+  border-radius: 2px;
   background-color: alpha(@color6, .85);
 }
 
