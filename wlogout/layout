@@ -1,7 +1,7 @@
 
 {
     "label" : "logout",
-    "action" : "wlogout --protocol layer-shell",
+    "action" : "hyprctl dispatch exit",
     "text" : "Logout",
     "keybind" : "e"
 }
